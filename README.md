@@ -8,3 +8,6 @@ mcuxpresso-sdk-init-action
     # Generate board-specific SDK package
     west update_board --set board frdmmcxw23 -o frdmmcxw23-sdk.zip
     ```
+
+### Playground
+- [dirkarnez/mcuxpresso-sdk-playground](https://github.com/dirkarnez/mcuxpresso-sdk-playground)
