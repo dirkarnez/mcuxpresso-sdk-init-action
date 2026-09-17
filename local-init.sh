@@ -32,6 +32,14 @@ export ARMGCC_DIR="/opt/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi"
 west init -m https://github.com/nxp-mcuxpresso/mcuxsdk-manifests.git mcuxpresso-sdk && \
 cd mcuxpresso-sdk && \
 west update_board --set board evkbmimxrt1170 && \
-cd mcuxsdk && \
-west export_app ./examples/demo_apps/hello_world -o $SCRIPT_DIR/dist/hello_world && \
-echo ok
+cd mcuxsdk
+
+for sample_project in "demo_apps/hello_world" "multicore_examples/hello_world"
+do
+   echo "exporting $sample_project..." && \
+   west export_app ./examples/$sample_project -o $SCRIPT_DIR/dist/$sample_project && \
+   echo "$sample_project ok"
+done
+
+
+
