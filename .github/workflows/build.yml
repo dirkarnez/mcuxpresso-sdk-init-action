@@ -29,19 +29,18 @@ jobs:
       
       - run: ./local-init.sh
 
-      - name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          directory: "dist"
-          filename: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
-
+      # - name: Archive Release
+      #   uses: thedoctor0/zip-release@master
+      #   with:
+      #     type: 'zip'
+      #     directory: "dist"
+      #     filename: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
 
       - uses: actions/upload-artifact@v4.6.0
         with:
           include-hidden-files: true
           name: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
-          path: "dist/${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
+          path: "dist"
           
       # - name: Release prebuilt
       #   uses: ncipollo/release-action@v1
