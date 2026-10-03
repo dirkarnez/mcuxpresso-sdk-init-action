@@ -27,14 +27,15 @@ cd $SCRIPT_DIR
 
 export ARMGCC_DIR="/opt/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi"
 
+export BOARD="frdmrw612" # evkbmimxrt1170
 # # Get the latest SDK from main branch:
 # west build -b evkbmimxrt1170 --sysbuild ./examples/multicore_examples/hello_world/primary -Dcore_id=cm7 --config release --toolchain=armgcc -p always -d cmake-build && \
 west init -m https://github.com/nxp-mcuxpresso/mcuxsdk-manifests.git mcuxpresso-sdk && \
 cd mcuxpresso-sdk && \
-west update_board --set board evkbmimxrt1170 && \
+west update_board --set board $BOARD && \
 cd mcuxsdk
 
-for sample_project in "demo_apps/hello_world" "multicore_examples/hello_world/primary" "multicore_examples/hello_world/secondary"
+for sample_project in "demo_apps/hello_world" # "multicore_examples/hello_world/primary" "multicore_examples/hello_world/secondary"
 do
    echo "exporting $sample_project..." && \
    west export_app ./examples/$sample_project -o $SCRIPT_DIR/dist/$sample_project && \
