@@ -26,8 +26,11 @@ jobs:
       - uses: actions/checkout@v6
 
       - run: sudo chmod +x -R .
-      
-      - run: ./local-init.sh
+
+      - id: init
+        run: |
+          source ./local-init.sh && \
+          echo "BOARD=$BOARD" >> "$GITHUB_OUTPUT"
 
       # - name: Archive Release
       #   uses: thedoctor0/zip-release@master
@@ -39,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v4.6.0
         with:
           include-hidden-files: true
-          name: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
+          name: "${{ github.event.repository.name }}-${{ github.ref_name }}-${{ steps.init.outputs.BOARD }}.zip"
           path: "dist"
           
       # - name: Release prebuilt
