@@ -39,7 +39,7 @@ jobs:
       #     directory: "dist"
       #     filename: "${{ github.event.repository.name }}-${{ github.ref_name }}.zip"
 
-      - uses: actions/upload-artifact@v4.6.0
+      - uses: actions/upload-artifact@v7.0.1
         with:
           include-hidden-files: true
           name: "${{ github.event.repository.name }}-${{ github.ref_name }}-${{ steps.init.outputs.BOARD }}.zip"
