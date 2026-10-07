@@ -35,12 +35,10 @@ cd mcuxpresso-sdk && \
 west update_board --set board $BOARD && \
 cd mcuxsdk
 
-for sample_project in "demo_apps/hello_world" # "multicore_examples/hello_world/primary" "multicore_examples/hello_world/secondary"
+for sample_project in "demo_apps/hello_world" "wifi_examples/uart_wifi_bridge" # "multicore_examples/hello_world/primary" "multicore_examples/hello_world/secondary"
 do
    echo "exporting $sample_project..." && \
    west export_app ./examples/$sample_project -o $SCRIPT_DIR/dist/$sample_project && \
    echo "$sample_project ok"
 done
-
-
 
