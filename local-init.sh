@@ -32,7 +32,7 @@ export BOARD="rdrw612bga" # evkbmimxrt1170 / frdmrw612
 # west build -b evkbmimxrt1170 --sysbuild ./examples/multicore_examples/hello_world/primary -Dcore_id=cm7 --config release --toolchain=armgcc -p always -d cmake-build && \
 west init -m https://github.com/nxp-mcuxpresso/mcuxsdk-manifests.git mcuxpresso-sdk && \
 cd mcuxpresso-sdk && \
-west update_board --set board $BOARD && \
+west update_board --set board $BOARD -o $SCRIPT_DIR/dist/$BOARD-sdk.zip && \
 cd mcuxsdk
 
 for sample_project in "demo_apps/hello_world" "wifi_examples/uart_wifi_bridge" # "multicore_examples/hello_world/primary" "multicore_examples/hello_world/secondary"
